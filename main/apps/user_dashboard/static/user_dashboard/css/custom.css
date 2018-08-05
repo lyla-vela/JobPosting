@@ -1,0 +1,12 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    font-family: "San Serif";
+   }
+.user_name_header .user_edit_header div{
+display:inline-block;
+vertical-align:top;
+}
+.user_edit_header div{
+    margin-left:800px;
+}

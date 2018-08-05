@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+           
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <style>
+                
+                button{width: 70px;
+                      height: 30px;
+                }
+            </style>
+    <title>
+        Edit a Job
+    </title>
+    </head>
+    <body>
+        <header>
+            <div class="navbar navbar-dark bg-dark box-shadow">
+                <div class="container d-flex justify-content-between">
+                </div>
+            </div>
+        </header>
+        <main role="main">
+                <div id="header" style="width:200px; margin-left:75%;">
+                    <a href="/new/{{user.id}}">Back</a> | <a href="/logout">Log out</a>
+                </div>
+                <form action="/update/{{user.id}}" method="POST">
+                    {% csrf_token %}
+                    <p>{{user.id}}</p>
+                    <div class="album py-5 bg-light">
+                            <div class="container">
+                               <!-- <form action='/checkfields' method='post'> -->
+                                  <h4 class="mb-3" id='registration'>Edit your job Posting</h4>
+                                  <input type="hidden" name="hdnID" value="{{user.id}}">
+                                  <div class="row" style="width:350px;">
+                                      <div class="col-md-6 mb-3">
+                                          <label for="firstName">Title:</label>
+                                          <input type="text" class="form-control" name="title" placeholder="" value="{{user.first_name}}">
+                                         
+                                      </div>
+                                      <div class="col-md-6 mb-3">
+                                          <label for="lastName">Description:</label>
+                                          <input style="height:120px;" type="textarea" class="form-control" name="last_name" placeholder="" value="{{user.last_name}}">
+                                          
+                                      </div>
+                                      <div class="col-md-6 mb-3">
+                                            <label for="lastName">Location</label>
+                                            <input type="text" class="form-control" name="email" placeholder="" value="{{user.email}}">
+                                            
+                                      </div>
+                                       
+                                    </div>
+                                    <button  class="btn btn-primary btn-lg btn-block" style="display:inline-block; width:114px; height:42px; margin-left:80px; margin-top:30px;" type="submit" name="quote_button">Submit</button>
+                                 
+                                  
+                                 
+                              
+                   
+                </form>     
+        </main>
+    </body>
+</html>
+

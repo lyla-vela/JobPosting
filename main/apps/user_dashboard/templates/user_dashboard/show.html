@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+           
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <style>
+                
+                button{width: 70px;
+                      height: 30px;
+                }
+            </style>
+    <title>
+        User information
+    </title>
+    </head>
+    <body>
+        <main role="main">       
+            <div class="card">
+                <div>
+                    <div id="header" style="width:200px; margin-left:75%;">
+                            <a href="/new/{{user.id}}">Back</a> | <a href="/logout">Log out</a>
+                     </div>
+                    
+                </div>
+                <h5 class="card-header">Job Information</h5>
+                <div class="card-body">
+                    <label>Job: : </label> 
+                    <input type="text" name="title" value="{{jobs.title}}"> <br>
+                    <label>Location : </label> 
+                    <input type="text" name="description" value="{{jobs.description}}"> <br>
+                    <label>Posted by : </label> 
+                    <input type="text" name="location" value="{{jobs.location}}"> <br>
+                    <label>Job posted on:</label> {{jobs.created_at}} <br>
+                   
+                    <a href="/add_job/{{user.id}}" class="btn btn-primary">Add to my Jobs</a> 
+                   
+                </div>
+            </div>
+           
+          
+        </main>
+    </body>
+</html>

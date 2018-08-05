@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+           
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <link rel="stylesheet" type="text/css" href="css/custom.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <style>
+                
+                button{width: 70px;
+                      height: 30px;
+                }
+
+               
+            </style>
+    <title>
+        Add a Job
+    </title>
+    </head>
+    <body>
+           
+        <main role="main">
+                <form >
+                    <div class="navbar navbar-dark bg-dark box-shadow">
+                        <div class="container d-flex justify-content-between" name="login_header">
+                            <div class="user_name_header" style="width:300px; display:inline-block;">
+                            <!-- <p>{{user}} {{request.session.id}}</p> -->
+                            
+                            <!-- <h3 class="jumbotron-heading" >Welcome {{user.first_name}} {{user.last_name}}!</h3>  -->
+                            </div>
+                            <div id="header" style="width:200px; margin-left:75%;">
+                                    <a href="/users/{{user.id}}">Back</a> | <a href="/logout">Log out</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <section class="jumbotron text-center">
+                    <div class="container">
+                            {% if messages %}
+                            <ul class="messagelist">{% for message in messages %}<li>{{ message }}</li>{% endfor %}</ul>
+                            {% endif %}
+                        <h3 class="jumbotron-heading" >Add a Job</h3>
+                            <div class="col-md-6 mb-3" id="author_post" style="display:inline-block; vertical-align:top; width:350px;">
+                                 <form action="/add_job/{{user.id}}" method="post">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="hdnID" value="{{user.id}}">
+                                    <label for="author" >Title</label>
+                                    <input type="text" class="form-control" name="title" style="vertical-align:top; display:inline-block; height:44px; width:226px;"placeholder="" value="{{user.first_name}}">
+                                    <label for="quote" >Description</label>
+                                    <textarea value="Your quote goes here" style="width:236px; height:86px; margin-top:30px;" name="description"></textarea>
+                                    <label for="author" >Location</label>
+                                    <input type="text" class="form-control" name="location" style="vertical-align:top; display:inline-block; height:44px; width:226px;"placeholder="" value="{{user.first_name}}">
+                                    <button  class="btn btn-secondary btn-lg btn-block" style="display:inline-block; width:114px; height:42px; margin-left:80px;" type="submit" name="quote_button">Submit</button>
+                                </form>
+                            </div>
+                    </div>
+                </section>         
+        </main>
+    </body>
+</html>

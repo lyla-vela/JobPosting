@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+           
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <link rel="stylesheet" type="text/css" href="css/custom.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+            <style>
+                
+                button{width: 70px;
+                      height: 30px;
+                }
+
+               
+            </style>
+    <title>
+        User Dashboard
+    </title>
+    </head>
+    <body>
+           
+        <main role="main">
+                <form >
+                    <div class="navbar navbar-dark bg-dark box-shadow">
+                        <div class="container d-flex justify-content-between" name="login_header">
+                            <div class="user_name_header" style="width:300px; display:inline-block;">
+                            <p>{{user}} {{request.session.id}}
+                                {{jobs}}
+                            </p>
+                            
+                            <h3 class="jumbotron-heading" >Welcome {{user.first_name}} {{user.last_name}}!</h3> 
+                            </div>
+                            <div class="user_edit_header" style="width:200px; display:inline-block; margin-left:200px;">
+                                <a href="/add/{{user.id}}">Add a job</a>
+                            <form action='/logout' method='post'>
+                                <button type="submit" value="Logout">Log out</button>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <section class="jumbotron text-center">
+                    <div class="container">
+                            <div class="col-md-6 mb-3" id="post_message"  style="width:330px; vertical-align:top; display:inline-block;">
+                                    <form action='/index' method='post'>
+                                        {% csrf_token %}
+                                        
+                                        <h2 class="mb-3" id='registration'>All Jobs</h2>                 
+                                    
+                                        <table class="table">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">Id</th>
+                                                <th scope="col">Job</th>
+                                                <th scope="col">Location</th>
+                                                
+                                                <th scope="col">Action</th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                  
+                                                 
+                                                {%for jobs in jobs%}
+                                                <td class="row">{{jobs.uploaded_by_id_id}}</td>
+                                                <td class="row">{{jobs.title}}</td>
+                                                <td class="row">{{jobs.location}}</td>
+                                                
+                                                <td><a href="/all_users/{{jobs.id}}/show">View</a>
+                                                    <a href="/all_users/{{jobs.id}}/add">Add</a>
+                                                    <a href="/all_users/{{jobs.id}}/edit">Edit</a>
+                                                    <a href="/all_users/{{jobs.id}}/destroy">Delete</a></td> 
+                                                {%endfor%}
+                                               
+                                            </tr>
+                                              
+                                            </tbody>
+                                          </table> 
+                                    </form>
+                            </div>
+                            <div class="col-md-6 mb-3" id="author_post" style="display:inline-block; vertical-align:top; width:350px;">
+                                    <form action='/index' method='post'>
+                                        {% csrf_token %}
+                                        <h2 class="mb-3" id='registration'>My current jobs</h2>                 
+                                    
+                                        <table class="table" style="display:block;">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col">My Jobs</th>
+                                                
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                {{all_jobs}}  
+                                                {%for jobs in jobs%}
+                                               
+                                                <td class="row">{{user.title}}</td>
+                                                <td><a href="/all_userx/{{user.id}}/show">View</a>
+                                                   
+                                                    <a href="/all_userx/{{user.id}}/destroy">Delete</a><br /></td> 
+                                                {%endfor%}
+                                                
+                                            </tr>
+                                              
+                                            </tbody>
+                                          </table> 
+                                    </form>
+                            </div>
+                    </div>
+                </section>         
+        </main>
+    </body>
+</html>
